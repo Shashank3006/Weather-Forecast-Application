@@ -1,1 +1,52 @@
-    
+      /* Smooth transition for hover effects */
+  .transition-all {
+    transition: all 0.3s ease-in-out;
+  }
+
+  /* Add shadow and hover lift to forecast cards */
+  .extended-forecast-container article:hover {
+    transform: translateY(-5px);
+    background-color: #374151; /* darker shade on hover */
+  }
+
+  /* Make weather image pulse slightly for visual interest */
+  .location-weather-image {
+    animation: pulseImg 3s infinite;
+  }
+
+  @keyframes pulseImg {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.03);
+    }
+  }
+
+  /* Modern scrollbar for recent search dropdown */
+  .recent-search-dropdown {
+    max-height: 200px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #4b5563 #1f2937;
+  }
+
+  .recent-search-dropdown::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .recent-search-dropdown::-webkit-scrollbar-track {
+    background: #1f2937;
+  }
+
+  .recent-search-dropdown::-webkit-scrollbar-thumb {
+    background-color: #4b5563;
+    border-radius: 5px;
+  }
+
+  /* Better spacing for Today’s Highlights */
+  .other-weather-section article:hover {
+    background-color: #374151;
+    transform: scale(1.02);
+  }
+

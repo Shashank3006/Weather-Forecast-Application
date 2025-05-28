@@ -1,96 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Real-time weather forecasts and 5-day weather predictions for any location worldwide. Get accurate temperature, humidity, wind speed, and more." />
+  <meta name="keywords" content="weather, forecast, temperature, weather app" />
+  <meta name="author" content="Shashank" />
+
     <title>Weather App</title>
-    <!-- Facicon Link -->
-    <link rel="shortcut icon" href="./resources/favicon icon.jpeg" type="image/x-icon">
-    <!-- External CSS Link -->
-    <link rel="stylesheet" href="./src/input.css">
-    <!-- Font Awesome CDN Link -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-    <!-- Tailwind CDN Link -->
+    <!-- costom  css add -->
+    <link rel="stylesheet" href="styles.css" />
+    <!--font-awesome cdn add  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <!-- tailwind cdn add-->
     <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
-    <!-- Main Section -->
-    <div class="block min-[850px]:flex">
-        <!-- Main Weather Section -->
-        <section class="min-w-fit p-4 shadow-lg min-[850px]:h-screen min-[850px]:fixed top-0 left-0 z-10 bg-white">
-            <!-- Search Section -->
-            <article class="flex">
-                <input type="text" placeholder="Enter City Name" autocomplete="true" class="location-input w-full min-[850px]:w-fit border border-slate-700 rounded-full mt-1 py-2 ps-3 pe-5">
-                <i class="location-search fa-solid fa-magnifying-glass cursor-pointer text-lg ms-2 bg-slate-800 text-white py-[10px] px-[15px] rounded-full mt-1"></i>
-                <i title="Search for Current Location" class="live fa-solid fa-location-crosshairs cursor-pointer text-lg ms-2 bg-slate-800 text-white py-[10px] px-[15px] mt-1 rounded-full"></i>
+  </head>
+  <body class="bg-gray-900 text-white">
+    
+      <div class="block min-[850px]:flex">
+        <!-- Sidebar -->
+        <section
+          class="min-w-fit p-4 shadow-lg min-[850px]:h-screen min-[850px]:fixed top-0 left-0 z-10 bg-gray-800 text-white"
+        >
+          <!-- Search Section -->
+          <article class="flex">
+            <input
+              type="text"
+              placeholder="Enter City Name"
+              autocomplete="true"
+              class="location-input w-full min-[850px]:w-fit bg-gray-700 text-white border border-gray-500 rounded-full mt-1 py-2 ps-3 pe-5"
+            />
+            <i
+              class="location-search fa-solid fa-magnifying-glass cursor-pointer text-lg ms-2 bg-blue-600 hover:bg-blue-700 text-white py-[10px] px-[15px] rounded-full mt-1"
+            ></i>
+            <i
+              title="Search for Current Location"
+              class="live fa-solid fa-location-crosshairs cursor-pointer text-lg ms-2 bg-blue-600 hover:bg-blue-700 text-white py-[10px] px-[15px] mt-1 rounded-full"
+            ></i>
+          </article>
+          <!-- Recent Searches -->
+          <section
+            class="recent-search-dropdown-container group relative rounded-md mt-3"
+          >
+            <p
+              class="recent-search-heading cursor-pointer w-full min-[460px]:w-max bg-blue-700 hover:bg-blue-800 text-white rounded-md p-2 border-2 border-blue-600"
+            >
+              Recent Searches
+            </p>
+            <section
+              class="hidden recent-search-dropdown group-hover:block w-full absolute top-[44px] bg-gray-700 text-white shadow-lg rounded-lg z-10"
+            ></section>
+          </section>
+          <!-- Weather Data -->
+          <article class="main-weather-section mt-5 hidden">
+            <img
+              alt="Weather Icon"
+              class="location-weather-image w-44 min-[500px]:w-64 my-10 mx-auto"
+            />
+            <article class="mt-5 text-center">
+              <p class="location-name text-2xl font-semibold text-white"></p>
+              <article
+                class="flex justify-between items-center mt-2 text-xl pe-4"
+              >
+                <p class="location-temp text-white"></p>
+                <p class="location-date-time text-white"></p>
+              </article>
+              <p
+                class="location-weather-description max-w-[350px] pt-6 text-xl text-gray-200"
+              ></p>
             </article>
-
-            <!-- Main Weather Data Section -->
-            <article class="main-weather-section hidden mt-5">
-                <img  alt="Weather Icon" class="location-weather-image w-44 min-[500px]:w-64 my-10 mx-auto">
-                <article class="mt-5">
-                    <p class="location-name text-2xl font-semibold"> shashank</p>
-                    <article class="flex justify-between items-center mt-2 text-xl pe-4">
-                        <p class="location-temp">shashank</p> <!-- 12°C -->
-                        <p class="location-date-time"></p>
-                    </article>
-                    <p class="location-weather-description max-w-[350px] pt-6 text-xl"></p>
-                </article>
-            </article>
+          </article>
         </section>
-        <!-- Main Weather Section -->
-        
-        <!-- Other Weather Details Main Section -->
-        <section class="bg-slate-100 h-screen mt-10 min-[850px]:mt-0 flex-grow min-[850px]:ms-96 py-4 ps-4 min-[850px]:ps-8 pe-4 relative">
-            <!-- Find City... -->
-            <article class="no-city-entered flex min-h-screen justify-center items-center absolute top-0 left-5">
-                <p class="text-slate-400 text-6xl font-bold -mt-12"></p>
-            </article>
-            <!-- Other Weather Details Section -->
-            <section>
-                <section class="flex flex-col h-full gap-y-3 min-[460px]:flex-row gap-x-3 min-[460px]:items-center">
-                    <!-- Extended Weather forecast Button -->
-                    <p class="hidden extended-forecast-heading w-full bg-slate-800 text-white rounded-md p-2 order-2 min-[460px]:-order-1">View Weather for next 5 days</p>
-                    <!-- Recent Search Dropdown Menu -->
-                    <section class="recent-search-dropdown-container group relative rounded-md ">
-                        <p class="recent-search-heading cursor-pointer w-full min-[460px]:w-max bg-slate-800 text-white rounded-md p-2 border-2 border-slate-700">Recent Searches</p>
-                        
-                        <section class="recent-search-dropdown hidden group-hover:block w-full absolute top-[44px] bg-slate-300 shadow-lg rounded-lg z-10">
-
-                        </section>
-                    </section>
-                </section>
-                <!-- Extented Weather for 5 days -->
-                <section class="extended-forecast-container mt-3 flex flex-wrap justify-start min-[850px]:justify-around gap-y-4 gap-x-4">
-                    <!-- Day Weather -->
-                    <!-- <article class="bg-white text-center w-fit p-3 rounded-xl shadow-lg">
-                        <p>Sun</p>
-                        <img src="../resources/cloudy.png" alt="Weather" class="w-36">
-                        <p>30°C</p>
-                    </article> -->
-                </section>
+        <!-- Main Content -->
+        <section
+          class="bg-gray-900 h-screen mt-10 min-[850px]:mt-0 flex-grow min-[850px]:ms-96 py-4 ps-4 min-[850px]:ps-8 pe-4 relative"
+        >
+          <article
+            class="no-city-entered flex min-h-screen justify-center items-center absolute top-0 left-5"
+          >
+            <p class="text-gray-500 text-6xl font-bold -mt-12"></p>
+          </article>
+          <!-- 5-Day Forecast Header -->
+          <section>
+            <section
+              class="flex flex-col h-full gap-y-3 min-[460px]:flex-row gap-x-3 min-[460px]:items-center"
+            >
+              <p
+                class="extended-forecast-heading w-full bg-blue-700 hover:bg-blue-800 text-white rounded-md p-2 order-2 min-[460px]:-order-1"
+              >
+                View Weather for next 5 days
+              </p>
             </section>
-            <!-- Today's Highlight -->
+            <!-- Today's Highlights -->
             <section class="mt-10">
-                <h2 class="hidden other-weather-details-section-heading text-3xl font-semibold">Today's Highlight</h2>
-                <section class="other-weather-section flex-wrap mt-3 flex gap-x-5 gap-y-5">
-                    <!-- <article class="bg-white min-w-[200px] text-center w-fit p-3 rounded-xl shadow-lg">
-                        <h3 class="font-semibold text-lg">UV Index</h3>
-                        <p class="mt-3 text-lg">7</p>
-                    </article> -->
-                </section>
+              <h2
+                class="other-weather-details-section-heading text-3xl font-semibold text-white"
+              >
+                Today's Highlight
+              </h2>
+              <section
+                class="other-weather-section flex-wrap mt-3 flex gap-x-5 gap-y-5"
+              ></section>
             </section>
-            <!-- Other Weather Details Section -->
+          </section>
+          <!-- Forecast Cards -->
+          <section
+            class="extended-forecast-container mt-3 flex flex-wrap justify-start min-[850px]:justify-around gap-y-4 gap-x-4"
+          ></section>
         </section>
-        <!-- Other Weather Details Main Section -->
-    </div>
-    <!-- Main Section -->
-
-    <!-- External Script File -->
-    <script src="app.js" defer>
-
-        
-    </script>
-</body>
+      </div>
+    
+    <!-- sweeet alert cdn add -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- scrip add -->
+    <script src="app.js" defer></script>
+  </body>
 </html>
